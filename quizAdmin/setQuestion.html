@@ -1,0 +1,89 @@
+{{define "setQuestion"}}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Contribute Question</title>
+    <style>
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            width: 75%;
+            margin-left: 12.5%;
+        }
+
+        #author{
+            width: 25%;
+        }
+
+        input[type=number]{
+            width: 50px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+        }
+
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            resize: vertical;
+
+        }
+
+        *:focus{
+            outline: none;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="signout" align="right">
+<form action="/signout">
+    <input type="submit" name="signOut" value="Sign Out">
+</form>
+</div>
+<h3 align="center">Welcome: {{.Author}}</h3>
+<h3 align="center">What should we ask about MongoDB? Post a question here (limit 160 chars):</h3>
+<div class="container">
+    <form method="post">
+        Q.
+        <input type="text" name="question" maxlength="160" size="160" required/>
+        <h3>Enter choices (minimum 3 to maximum 4 - limit 40 chars):</h3>
+        1.
+        <input type="text" name="c" maxlength="40" size="40" required/>
+        2.
+        <input type="text" name="c" maxlength="40" size="40" required/><br>
+        3.
+        <input type="text" name="c" maxlength="40" size="40" required/><br>
+        4.
+        <input type="text" name="c" maxlength="40" size="40"/><br>
+        <h3>Enter correct answer number (between 1 & 4):</h3>
+        <input type="number" name="answer" min="1" max="4" required>
+        <h3>Is it basic(1),intermediate(2) or advanced(3)?</h3>
+        <input type="number" name="category" min="1" max="3">
+        <h3>Ready to Submit? Click below:</h3>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<h3 align="center">{{.Message}}</h3>
+</body>
+</html>
+{{end}}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{{define "signup"}}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form name="signup" method="post">
+        Username: <input type="text" name="username" maxlength="10" size="10"> </br>
+        Password: <input type="password" name="password" minlength="4" maxlength="10" size="10"> </br>
+        <input type="submit" name="createUser" value="Sign Up">
+    </form>
+    {{if .Err}}
+    <b>Username already taken. Choose a different username.</b>
+    {{end}}
+
+    {{if .Success}}
+     <b>User created. Click: </b>
+     <input type="button" onclick="location.href='http://localhost:8080/signin';" value="Go to SignIn Page" />
+    {{end}}
+</body>
+</html>
+{{end}}
